@@ -1,5 +1,5 @@
 name: workflow-name
-run-name: run-name
+run-name: ${{ github.event.action }} - ${{ github.event_name }} 
 
 on:
   #push:
