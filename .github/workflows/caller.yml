@@ -1,5 +1,5 @@
-name: workflow-name
-run-name: run-name
+name: calling-mainwf
+run-name: run-name-calling-mainwf
 
 on:
   #push:
