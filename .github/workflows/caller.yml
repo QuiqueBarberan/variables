@@ -1,0 +1,32 @@
+name: workflow-name
+run-name: run-name
+
+on:
+  #push:
+  #workflow_dispatch:
+  workflow_call:
+    inputs:
+      allure:
+        type: boolean
+        description: Generar reporte Allure
+        default: true
+      extent:
+        type: boolean
+        description: Generar reporte Extent
+        default: true
+      cucumber:
+        type: boolean
+        description: Generar reporte Cucumber
+        default: true
+      recorder:
+        type: boolean
+        description: Grabar la ejecución
+        default: true
+jobs:
+  call-workflow-passing-data:
+    uses: QuiqueBarberan/variables/.github/workflows/main_wf.yml@master
+    with:
+      allure: true
+      extent: false
+      cucumber: false
+      recorder: false
