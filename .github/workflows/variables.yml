@@ -2,13 +2,30 @@ name: workflow-name
 run-name: run-name
 
 on:
-  push:
-  workflow_dispatch:
+  #push:
+  #workflow_dispatch:
   workflow_call:
-
+    inputs:
+      allure:
+        type: boolean
+        description: Generar reporte Allure
+        default: true
+      extent:
+        type: boolean
+        description: Generar reporte Extent
+        default: true
+      cucumber:
+        type: boolean
+        description: Generar reporte Cucumber
+        default: true
+      recorder:
+        type: boolean
+        description: Grabar la ejecución
+        default: true
 env:
   # Setting an environment variable with the value of a configuration variable
-  env_var: ${{ vars.ENV_CONTEXT_VAR }}
+  var1: ${{ github.event.inputs.recorder }}
+  env_var: ${{ github.event.inputs.allure }}
 
 jobs:
   display-variables:
@@ -24,6 +41,7 @@ jobs:
         echo "organization variable : ${{ vars.ORGANIZATION_VAR }}"
         echo "overridden variable : ${{ vars.OVERRIDE_VAR }}"
         echo "variable from shell environment : $env_var"
+        echo "variable from input workflow_1: $env_var"
 
     - name: ${{ vars.HELLO_WORLD_STEP }}
       if: ${{ vars.HELLO_WORLD_ENABLED == 'true' }}
