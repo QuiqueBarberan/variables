@@ -25,10 +25,10 @@ jobs:
   call-workflow-passing-data:
     uses: QuiqueBarberan/variables/.github/workflows/main_wf.yml@master
     with:
-      allure: true
-      extent: false
-      cucumber: true
-      recorder: false
+      allure: ${{ inputs.allure }} 
+      extent: ${{ inputs.extent }} 
+      cucumber: ${{ inputs.cucumber }} 
+      recorder: ${{ inputs.recorder }} 
 
 #       allure: ${{ github.event.inputs.allure == 'true' }}
 #       extent: ${{ github.event.inputs.extent == 'true' }}
