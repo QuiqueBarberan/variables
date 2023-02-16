@@ -42,6 +42,10 @@ jobs:
         echo "overridden variable : ${{ vars.OVERRIDE_VAR }}"
         echo "variable from shell environment : $env_var"
         echo "variable from input workflow_1: $var1"
+        echo "variable from input 1: ${{ inputs.allure }}"
+        echo "variable from input 2: ${{ inputs.extent }}"
+        echo "variable from input 3: ${{ inputs.cucumber }}"
+        echo "variable from input 4: ${{ inputs.recorder }}"
 
 #     - name: ${{ vars.HELLO_WORLD_STEP }}
 #       if: ${{ vars.HELLO_WORLD_ENABLED == 'true' }}
