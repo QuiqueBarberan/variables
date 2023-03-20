@@ -5,7 +5,7 @@ jobs:
   JOB1:
     runs-on: ubuntu-latest
     outputs:
-      EXECUTION_TIME: ${{ steps.steptimeoutputs.time }}
+      EXECUTION_TIME: ${{ steps.steptime.outputs.time }}
     steps:
       - name: Crear Valor
         id: steptime
