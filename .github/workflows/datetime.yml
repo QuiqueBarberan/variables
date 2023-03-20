@@ -1,6 +1,5 @@
 name: DateTime yml
 
-
 on:
   workflow_dispatch:
 
@@ -14,8 +13,6 @@ jobs:
         run: echo "time=$(date '+%Y%m%d%H%M')" >> "$GITHUB_OUTPUT"
       - name: show1
         run: echo $time
-      - name: show2
-        run: echo ${{ job1.outputs.output_time }}
   job2:
     runs-on: ubuntu-latest
     needs: job1
