@@ -1,8 +1,8 @@
 on:
   workflow_dispatch:
 
-env:
-  TIEMPO: 123456
+#env:
+#  TIEMPO: 123456
 
 jobs:
   Echo-On-Commit:
