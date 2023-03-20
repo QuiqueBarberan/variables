@@ -2,7 +2,7 @@ on:
   workflow_dispatch:
 
 env:
-  TIEMPO: $NOW
+  TIEMPO: ${{ github.event.repository.updated_at}}
 
 jobs:
   JOB1:
