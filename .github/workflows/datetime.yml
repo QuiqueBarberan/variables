@@ -1,8 +1,8 @@
 on:
   workflow_dispatch:
 
-#env:
-#  TIEMPO: 123456
+env:
+  TIEMPO: 123456
 
 jobs:
   Echo-On-Commit:
@@ -11,6 +11,6 @@ jobs:
       - name: "mostrar valor"
         run: echo $TIEMPO
       - name: "mostrar valor"
-        run: echo "TIEMPO=654321" >> $TIEMPO
+        run: echo "TIEMPO=654321" >> $GITHUB_ENV
       - name: "mostrar valor despues"
         run: echo $TIEMPO
