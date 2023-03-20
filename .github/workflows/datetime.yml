@@ -1,0 +1,16 @@
+on:
+  workflow_dispatch:
+
+env:
+  TIEMPO: 123456
+
+jobs:
+  Echo-On-Commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "mostrar valor"
+        run: echo $TIEMPO
+      - name: "mostrar valor"
+        run: echo "flag=654321" >> $TIEMPO
+      - name: "mostrar valor despues"
+        run: echo $TIEMPO
