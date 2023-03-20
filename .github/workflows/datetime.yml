@@ -2,7 +2,7 @@ on:
   workflow_dispatch:
 
 env:
-  TIEMPO: 123456
+  TIEMPO: $(date '+%Y-%m-%d')
 
 jobs:
   JOB1:
