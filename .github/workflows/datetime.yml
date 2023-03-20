@@ -11,6 +11,6 @@ jobs:
       - name: "mostrar valor"
         run: echo $TIEMPO
       - name: "mostrar valor"
-        run: echo "flag=654321" >> $TIEMPO
+        run: echo "TIEMPO=654321" >> $TIEMPO
       - name: "mostrar valor despues"
         run: echo $TIEMPO
