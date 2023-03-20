@@ -1,4 +1,4 @@
-name: DateTime
+name: DateTime yml
 
 
 on:
@@ -16,7 +16,7 @@ jobs:
         
       - name: Mostrar valor
         id: showvalue
-        run: echo ${{ steps.steptimeoutputs.time }}
+        run: echo ${{ steps.steptime.outputs.time }}
 
   JOB2:
     needs: JOB1
@@ -24,4 +24,4 @@ jobs:
     steps:
       - name: Mostrar valor despues
         id: showvalue
-        run: echo ${{ steps.steptimeoutputs.time }}
+        run: echo ${{ steps.steptime.outputs.time }}
