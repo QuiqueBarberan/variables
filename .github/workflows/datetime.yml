@@ -1,23 +1,24 @@
 on:
   workflow_dispatch:
 
-env:
-  TIEMPO: ${{ github.event.repository.updated_at}}
-
 jobs:
   JOB1:
     runs-on: ubuntu-latest
+    outputs:
+      EXECUTION_TIME: ${{ steps.steptimeoutputs.time }}
     steps:
-      - name: "mostrar valor"
-        run: echo $TIEMPO
-      - name: "mostrar valor"
-        run: echo "TIEMPO=654321" >> $GITHUB_ENV
-      - name: "mostrar valor despues"
-        run: echo $TIEMPO
+      - name: Crear Valor
+        id: steptime
+        run: echo "time=$(date '%Y%m%d%H%M')" >> GITHUB_OUTPUT
+        
+      - name: Mostrar valor
+        id: showvalue
+        run: echo ${{ steps.steptimeoutputs.time }}
 
   JOB2:
     needs: JOB1
     runs-on: ubuntu-latest
     steps:
-      - name: "mostrar valor despues"
-        run: echo $TIEMPO
+      - name: Mostrar valor despues
+        id: showvalue
+        run: echo ${{ steps.steptimeoutputs.time }}
