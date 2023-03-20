@@ -5,12 +5,19 @@ env:
   TIEMPO: 123456
 
 jobs:
-  Echo-On-Commit:
+  JOB1:
     runs-on: ubuntu-latest
     steps:
       - name: "mostrar valor"
         run: echo $TIEMPO
       - name: "mostrar valor"
         run: echo "TIEMPO=654321" >> $GITHUB_ENV
+      - name: "mostrar valor despues"
+        run: echo $TIEMPO
+
+  JOB2:
+    needs: JOB1
+    runs-on: ubuntu-latest
+    steps:
       - name: "mostrar valor despues"
         run: echo $TIEMPO
