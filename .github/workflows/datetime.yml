@@ -2,7 +2,7 @@ on:
   workflow_dispatch:
 
 env:
-  TIEMPO: $(date '+%Y-%m-%d')
+  TIEMPO: ${{ github.event.created_at }}
 
 jobs:
   JOB1:
