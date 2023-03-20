@@ -12,7 +12,8 @@ jobs:
     steps:
       - name: Crear Valor
         id: steptime
-        run: echo "time=$(date '+%Y%m%d%H%M')" >> "GITHUB_OUTPUT"
+        #run: echo "time=$(date '+%Y%m%d%H%M')" >> "GITHUB_OUTPUT"
+        run: echo "time=hello" >> "GITHUB_OUTPUT"
         
       - name: Mostrar valor
         id: showvalue
