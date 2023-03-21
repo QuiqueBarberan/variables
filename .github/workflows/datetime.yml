@@ -15,7 +15,7 @@ jobs:
       - name: Set MY_VAR
         run: |
           my_var_value="hello world"
-          echo "::set-env name=MY_VAR::$my_var_value"
+          echo "MY_VAR=$my_var_value" >> $GITHUB_ENV
       - name: Use MY_VAR1
         run: |
           echo "MY_VAR value is: ${{ env.MY_VAR }}"
