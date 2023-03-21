@@ -3,12 +3,22 @@ name: DateTime yml
 on:
   workflow_dispatch:
 
+env:
+  MY_VAR: ''
+
 jobs:
   job1:
     runs-on: ubuntu-latest
     outputs:
       output_time: ${{ steps.stepid.outputs.time }}
     steps:
+      - name: Set MY_VAR
+        run: |
+          my_var_value="hello world"
+          echo "::set-env name=MY_VAR::$my_var_value"
+      - name: Use MY_VAR1
+        run: |
+          echo "MY_VAR value is: ${{ env.MY_VAR }}"
       - id: stepid
         run: echo "time=$(date '+%Y%m%d%H%M')" >> "$GITHUB_OUTPUT"
       - name: show1
@@ -17,6 +27,10 @@ jobs:
     runs-on: ubuntu-latest
     needs: job1
     steps:
+      - name: Use MY_VAR2
+        run: |
+          echo "MY_VAR value is: ${{ env.MY_VAR }}"
+
       - env:
           EXECUTION_TIME: ${{needs.job1.outputs.output_time}}
         run: echo "$EXECUTION_TIME"
