@@ -2,7 +2,6 @@ name: calling-mainwf
 run-name: run-name-calling-mainwf
 
 on:
-  push:
   workflow_dispatch:
     inputs:
       allure:
