@@ -1,0 +1,25 @@
+name: Add and Commit
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v2
+      - name: Crear archivo Markdown
+        run: |
+          echo "## Repositorios" >> reporte.md
+          echo "| Nombre | Descripción |" >> reporte.md
+          echo "|-|-|" >> reporte.md
+          echo "## Codeowners" >> reporte.md
+          echo "| Nombre | Email |" >> reporte.md
+          echo "|-|-|" >> reporte.md
+          echo "## Desarrolladores" >> reporte.md
+          echo "| Nombre | Email |" >> reporte.md
+          echo "|-|-|" >> reporte.md
+      - uses: EndBug/add-and-commit@v9
+        with:
+          default_author: github_actions
