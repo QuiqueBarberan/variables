@@ -20,6 +20,10 @@ jobs:
           echo "## Desarrolladores" >> reporte.md
           echo "| Nombre | Email |" >> reporte.md
           echo "|-|-|" >> reporte.md
+      - name: Mover archivo Markdown a una carpeta
+        run: |
+          mkdir folder1
+          mv reporte.md folder1/reporte.md
       - uses: EndBug/add-and-commit@v9
         with:
           default_author: github_actions
