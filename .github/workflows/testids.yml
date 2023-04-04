@@ -1,0 +1,15 @@
+name: workflows id's
+
+
+jobs:
+  testids:
+    runs-on: ubuntu-latest
+      steps:
+      - name: Output Run ID
+        run: echo ${{ github.run_id }}
+      - name: Output Run Number
+        run: echo ${{ github.run_number }}
+      - name: Output Run Attempt
+        run: echo ${{ github.run_attempt }}
+      
+
