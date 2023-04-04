@@ -13,6 +13,7 @@ jobs:
           token: ${{ secrets.GH_TOKEN }}
       - name: Crear archivo Markdown
         run: |
+          echo "# Cambio1" >> reporte.md
           echo "## Repositorios" >> reporte.md
           echo "| Nombre | Descripción |" >> reporte.md
           echo "|-|-|" >> reporte.md
