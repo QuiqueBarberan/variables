@@ -9,6 +9,8 @@ jobs:
     steps:
       - name: Checkout código
         uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.GH_TOKEN }}
       - name: Crear archivo Markdown
         run: |
           echo "## Repositorios" >> reporte.md
