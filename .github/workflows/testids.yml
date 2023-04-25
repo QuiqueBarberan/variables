@@ -2,6 +2,9 @@ name: workflows id's
 
 on:
   workflow_dispatch:
+  schedule:
+   - cron: '0 2,4 * * 5'
+   - cron: '33 9 * * 2'
 
 jobs:
   testids:
