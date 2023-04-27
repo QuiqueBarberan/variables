@@ -5,8 +5,8 @@ on:
     inputs:
       env:
         options:
-        - ELPAIS
-        - HUFFPOST
+        - dev
+        - test
         type: choice
 jobs:
   job1:
