@@ -1,0 +1,16 @@
+name: testenviron
+
+on:
+  workflow_dispatch:
+    inputs:
+      env:
+        type: string
+        default: dev
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.env }}
+    steps:
+      - run: echo ${{ vars.VAR1 }}
+      - run: echo ${{ vars.VAR2 }}
