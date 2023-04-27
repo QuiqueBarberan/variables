@@ -4,9 +4,10 @@ on:
   workflow_dispatch:
     inputs:
       env:
-        type: string
-        default: dev
-
+        options:
+        - ELPAIS
+        - HUFFPOST
+        type: choice
 jobs:
   job1:
     runs-on: ubuntu-latest
