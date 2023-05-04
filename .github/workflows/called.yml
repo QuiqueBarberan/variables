@@ -11,6 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo 'init'
-      - run: echo 'dentro'
+      - run: echo 'inputs.called'
+        if: ${{ inputs.called }}
+      - run: echo 'inputs.called == 'true''
         if: ${{ inputs.called == 'true' }}
+      - run: echo 'inputs.called == true'
+        if: ${{ inputs.called == true }}
       - run: echo 'end'
