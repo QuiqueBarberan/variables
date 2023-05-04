@@ -1,0 +1,13 @@
+name: calling
+
+on:
+  workflow_dispatch:
+    inputs:
+      calling:
+        type: boolean
+        default: true
+jobs:
+  job_calling:
+    uses: QuiqueBarberan/variables/new/master/.github/workflows/called.yml@master
+    with:
+      called: ${{ inputs.calling }}
