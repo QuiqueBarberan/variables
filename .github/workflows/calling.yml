@@ -8,6 +8,6 @@ on:
         default: true
 jobs:
   job_calling:
-    uses: QuiqueBarberan/variables/new/master/.github/workflows/called.yml@master
+    uses: QuiqueBarberan/variables/.github/workflows/called.yml@master
     with:
       called: ${{ inputs.calling }}
