@@ -1,4 +1,4 @@
-name: testenviron
+name: test environ
 
 on:
   workflow_dispatch:
@@ -13,5 +13,9 @@ jobs:
     runs-on: ubuntu-latest
     environment: ${{ inputs.env }}
     steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - name: Github Workspace
+        run: echo ${{ github.github_workspace }}
       - run: echo ${{ vars.VAR1 }}
       - run: echo ${{ vars.VAR2 }}
