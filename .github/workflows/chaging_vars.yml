@@ -11,21 +11,12 @@ jobs:
     environment: dev
     env:
       GH_TOKEN: ${{ secrets.SECRET1 }}
-    outputs:
-      output_time: ${{ steps.stepid.outputs.time }}
     steps:
       - name: Use REPO_ID
         run: |
           echo "REPO_ID value is: ${{ env.REPO_ID }}"
       - id: stepid
         run: |
-          echo $(gh api -H "Accept: application/vnd.github+json" repos/QuiqueBarberan/${{ github.event.repository.name }}) | jq .id
-      - name: Set REPO_ID
-        run: |
-          echo "REPO_ID=${{ steps.stepid.outputs.time }}" >> $GITHUB_ENV
-          echo "REPO_ID value is as repo-env-value: ${{ env.REPO_ID }}"
+          echo "REPO_ID=echo $(gh api -H "Accept: application/vnd.github+json" repos/QuiqueBarberan/${{ github.event.repository.name }}) | jq .id" >> $GITHUB_ENV
           echo "REPO_ID value is as intern-var: $REPO_ID"
-      - name: Use again REPO_ID
-        run: |
           echo "REPO_ID value is as repo-env-value: ${{ env.REPO_ID }}"
-          echo "REPO_ID value is as intern-var: $REPO_ID"
