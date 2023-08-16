@@ -18,5 +18,5 @@ jobs:
       - id: stepid
         run: |
           echo "REPO_ID=$(gh api -H "Accept: application/vnd.github+json" repos/QuiqueBarberan/${{ github.event.repository.name }}) | jq .id" >> $GITHUB_ENV
-          echo "REPO_ID value is as intern-var: $REPO_ID"
+      - run: |
           echo "REPO_ID value is as repo-env-value: ${{ env.REPO_ID }}"
