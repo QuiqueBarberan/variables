@@ -1,4 +1,4 @@
-name: DateTime yml
+name: Changing vars
 
 on:
   workflow_dispatch:
