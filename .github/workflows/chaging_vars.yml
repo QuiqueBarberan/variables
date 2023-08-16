@@ -19,8 +19,7 @@ jobs:
           echo "REPO_ID value is: ${{ env.REPO_ID }}"
       - id: stepid
         run: |
-          echo $(gh api -H "Accept: application/vnd.github+json" repos/QuiqueBarberan/${{ github.event.repository.name }})
-          jq .id
+          echo $(gh api -H "Accept: application/vnd.github+json" repos/QuiqueBarberan/${{ github.event.repository.name }}) | jq .id
       - name: Set REPO_ID
         run: |
           echo "REPO_ID=${{ steps.stepid.outputs.time }}" >> $GITHUB_ENV
