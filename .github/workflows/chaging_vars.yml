@@ -17,6 +17,6 @@ jobs:
           echo "REPO_ID value is: ${{ env.REPO_ID }}"
       - id: stepid
         run: |
-          echo "REPO_ID=$(gh api -H "Accept: application/vnd.github+json" repos/QuiqueBarberan/${{ github.event.repository.name }}) | jq .id" >> $GITHUB_ENV
+          REPO_ID=$(gh api -H "Accept: application/vnd.github+json" repos/QuiqueBarberan/${{ github.event.repository.name }} | jq .id) >> $GITHUB_ENV
       - run: |
           echo "REPO_ID value is as repo-env-value: ${{ env.REPO_ID }}"
