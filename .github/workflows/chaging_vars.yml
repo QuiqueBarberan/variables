@@ -8,6 +8,9 @@ env:
 jobs:
   job1:
     runs-on: ubuntu-latest
+    environment: dev
+    env:
+      GH_TOKEN: ${{ secrets.SECRET1 }}
     outputs:
       output_time: ${{ steps.stepid.outputs.time }}
     steps:
