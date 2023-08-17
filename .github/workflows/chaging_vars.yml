@@ -2,8 +2,8 @@ name: Changing vars
 
 on:
   workflow_dispatch:
-env:
-  REPO_ID: '123456789'
+#env:
+#  REPO_ID: '123456789'
 
 jobs:
   job1:
@@ -15,8 +15,15 @@ jobs:
       - name: Use REPO_ID
         run: |
           echo "REPO_ID value is: ${{ env.REPO_ID }}"
-      - id: stepid
+      - id: getrepoid
         run: |
           echo REPO_ID=$(gh api -H "Accept: application/vnd.github+json" repos/QuiqueBarberan/${{ github.event.repository.name }} | jq .id) >> $GITHUB_ENV
-      - run: |
-          echo "REPO_ID value is as repo-env-value: ${{ env.REPO_ID }}"
+      - id: echorepoid
+        run: |
+          echo "REPO_ID value is: ${{ env.REPO_ID }}"
+      - id: getbuildnumber
+        run: |
+          echo BUILD_NUMBER=$(gh api -H "Accept: application/vnd.github+json" repositories/${{ env.REPO_ID }}/environments/${{ github.environment }}/variables/BUILD_NUMBER | jq .id) >> $GITHUB_ENV
+      - id: echobuildnumber
+        run: |
+          echo "BUILD_NUMBER value: ${{ env.BUILD_NUMBER }}"
