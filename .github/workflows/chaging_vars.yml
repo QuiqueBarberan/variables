@@ -26,4 +26,4 @@ jobs:
           echo BUILD_NUMBER=$(gh api -H "Accept: application/vnd.github+json" repositories/${{ env.REPO_ID }}/environments/dev/variables/BUILD_NUMBER | jq .id) >> $GITHUB_ENV
       - id: echobuildnumber
         run: |
-          echo "BUILD_NUMBER value: ${{ env.BUILD_NUMBER }}"
+          echo BUILD_NUMBER=`expr ${{ env.BUILD_NUMBER }} + 1` >> $GITHUB_ENV
