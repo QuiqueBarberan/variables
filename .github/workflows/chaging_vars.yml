@@ -30,4 +30,4 @@ jobs:
           echo BUILD_NUMBER
           echo BUILD_NUMBER=$($BUILD_NUMBER) >> GITHUB_ENV
           echo ${{ BUILD_NUMBER }}
-          gh api --method PATCH -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" /repositories/${{ env.REPO_ID }}/environments/dev/variables/BUILD_NUMBER -f name=BUILD_NUMBER -f value=${{ env.BUILD_NUMBER }}
+          gh api --method PATCH -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" /repositories/${{ env.REPO_ID }}/environments/dev/variables/BUILD_NUMBER -f name='BUILD_NUMBER' -f value='${{ env.BUILD_NUMBER }}'
