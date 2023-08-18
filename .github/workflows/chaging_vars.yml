@@ -8,6 +8,11 @@ on:
         options:
           - dev
           - test
+      variable:
+        type: string
+        description: 'Name of environment variable'
+        required: true
+
 jobs:
   job1:
     runs-on: ubuntu-latest
@@ -23,7 +28,7 @@ jobs:
           echo "REPO_ID value is: ${{ env.REPO_ID }}"
       - name: getbuildnumber
         run: |
-          echo BUILD_NUMBER=$(gh api -H "Accept: application/vnd.github+json" repositories/${{ env.REPO_ID }}/environments/${{ inputs.environment }}/variables/BUILD_NUMBER | jq .value) >> $GITHUB_ENV
+          echo ${{ inputs.variable }}=$(gh api -H "Accept: application/vnd.github+json" repositories/${{ env.REPO_ID }}/environments/${{ inputs.environment }}/variables/${{ inputs.variable }} | jq .value) >> $GITHUB_ENV
       - name: echobuildnumber
         run: |
           BUILD_NUMBER=${{ env.BUILD_NUMBER }}
