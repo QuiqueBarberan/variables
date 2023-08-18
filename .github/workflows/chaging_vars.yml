@@ -17,12 +17,9 @@ jobs:
     steps:
       - name: Retrieve Environment Name
         run: |
-          echo ${{ github.event.repository.id }}
-          echo ${{ github.event.org.login }}
+          echo ${{ github.event.repository.name }}
+          echo ${{ github.event.org }}
         
-      - name: Use REPO_ID
-        run: |
-          echo "REPO_ID value is: ${{ env.REPO_ID }}"
       - name: getrepoid
         run: |
           echo REPO_ID=$(gh api -H "Accept: application/vnd.github+json" repos/QuiqueBarberan/${{ github.event.repository.name }} | jq .id) >> $GITHUB_ENV
