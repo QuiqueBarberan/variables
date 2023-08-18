@@ -1,0 +1,25 @@
+name: Call Action increase value
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        type: choice
+        options:
+          - dev
+          - test
+      variable:
+        type: string
+        description: 'Name of environment variable'
+        required: true
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
+    steps:
+      - name: getrepoid
+        uses: QuiqueBarberan/change-env-var@master
+        with:
+          environment: dev
+          variable: BUILD_NUMBER
