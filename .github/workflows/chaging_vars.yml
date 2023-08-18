@@ -12,19 +12,21 @@ jobs:
     env:
       GH_TOKEN: ${{ secrets.SECRET1 }}
     steps:
+      - name: Retrieve Environment Name
+        run: echo ${{ jobs.job1.environment }}
       - name: Use REPO_ID
         run: |
           echo "REPO_ID value is: ${{ env.REPO_ID }}"
-      - id: getrepoid
+      - name: getrepoid
         run: |
           echo REPO_ID=$(gh api -H "Accept: application/vnd.github+json" repos/QuiqueBarberan/${{ github.event.repository.name }} | jq .id) >> $GITHUB_ENV
-      - id: echorepoid
+      - name: echorepoid
         run: |
           echo "REPO_ID value is: ${{ env.REPO_ID }}"
-      - id: getbuildnumber
+      - name: getbuildnumber
         run: |
           echo BUILD_NUMBER=$(gh api -H "Accept: application/vnd.github+json" repositories/${{ env.REPO_ID }}/environments/dev/variables/BUILD_NUMBER | jq .value) >> $GITHUB_ENV
-      - id: echobuildnumber
+      - name: echobuildnumber
         run: |
           BUILD_NUMBER=${{ env.BUILD_NUMBER }}
           BUILD_NUMBER=${BUILD_NUMBER//\"/}
