@@ -2,9 +2,12 @@ name: Changing vars
 
 on:
   workflow_dispatch:
-#env:
-#  REPO_ID: '123456789'
-
+    inputs:
+      environment:
+        type: choice
+        options:
+          - dev
+          - test
 jobs:
   job1:
     runs-on: ubuntu-latest
@@ -25,7 +28,7 @@ jobs:
           echo "REPO_ID value is: ${{ env.REPO_ID }}"
       - name: getbuildnumber
         run: |
-          echo BUILD_NUMBER=$(gh api -H "Accept: application/vnd.github+json" repositories/${{ env.REPO_ID }}/environments/dev/variables/BUILD_NUMBER | jq .value) >> $GITHUB_ENV
+          echo BUILD_NUMBER=$(gh api -H "Accept: application/vnd.github+json" repositories/${{ env.REPO_ID }}/environments/${{ inputs.environment }}/variables/BUILD_NUMBER | jq .value) >> $GITHUB_ENV
       - name: echobuildnumber
         run: |
           BUILD_NUMBER=${{ env.BUILD_NUMBER }}
