@@ -13,7 +13,7 @@ jobs:
       GH_TOKEN: ${{ secrets.SECRET1 }}
     steps:
       - name: Retrieve Environment Name
-        run: echo ${{ jobs.job1.environment }}
+        run: echo ${{ github.jobs.job1.environment }}
       - name: Use REPO_ID
         run: |
           echo "REPO_ID value is: ${{ env.REPO_ID }}"
