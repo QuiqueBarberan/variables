@@ -18,7 +18,7 @@ jobs:
       - name: Retrieve Environment Name
         run: |
           echo ${{ github.event.repository.name }}
-          echo ${{ github.event.org }}
+          echo ${{ tojson(github.event.org) }}
         
       - name: getrepoid
         run: |
