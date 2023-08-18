@@ -15,14 +15,9 @@ jobs:
     env:
       GH_TOKEN: ${{ secrets.SECRET1 }}
     steps:
-      - name: Retrieve Environment Name
-        run: |
-          echo ${{ github.event.repository.name }}
-          echo ${{ github.event.org.login }}
-        
       - name: getrepoid
         run: |
-          echo REPO_ID=$(gh api -H "Accept: application/vnd.github+json" repos/QuiqueBarberan/${{ github.event.repository.name }} | jq .id) >> $GITHUB_ENV
+          echo REPO_ID=$(gh api -H "Accept: application/vnd.github+json" repos/${{ github.event.repository.owner.login }}/${{ github.event.repository.name }} | jq .id) >> $GITHUB_ENV
       - name: echorepoid
         run: |
           echo "REPO_ID value is: ${{ env.REPO_ID }}"
